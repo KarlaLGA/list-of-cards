@@ -13,12 +13,12 @@ export default function Page() {
     useEffect(() => {
         get().then(data => {
             const structuredData = data
-                .data
                 .items
                 .filter(item => item.saleInfo.saleability !== 'NOT_FOR_SALE')
                 .map(item => ({name: item.volumeInfo.title, image: item.volumeInfo.imageLinks.thumbnail, rating: item.volumeInfo.averageRating, price: `${item.saleInfo.listPrice.amount}`}))
             setListItems(structuredData)
-        }).catch(error => console.error(error))
+        })
+        // .catch(error => console.error(error))
 
     }, [])
 
